@@ -1,0 +1,120 @@
+/* Custom Logo CSS - Logo appears ONLY in header and login form */
+
+/* ============================================
+   LOGO IN HEADER - Barra azul superior
+   ============================================ */
+#header {
+  position: relative !important;
+  min-height: 60px !important;
+}
+
+/* Logo en el header usando background-image */
+#header > h1 {
+  position: relative !important;
+  padding-left: 230px !important;
+  min-height: 60px !important;
+  background-image: url("/images/logo.png") !important;
+  background-size: 200px auto !important;
+  background-repeat: no-repeat !important;
+  background-position: 15px center !important;
+}
+
+/* Logo alternativo usando pseudo-elemento si h1 no funciona */
+#header::before {
+  content: "" !important;
+  display: block !important;
+  position: absolute !important;
+  left: 15px !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  width: 200px !important;
+  height: 60px !important;
+  background-image: url("/images/logo.png") !important;
+  background-size: contain !important;
+  background-repeat: no-repeat !important;
+  background-position: left center !important;
+  z-index: 10 !important;
+  pointer-events: none !important;
+}
+
+/* ============================================
+   LOGO IN LOGIN FORM - Solo en el formulario de login
+   ============================================ */
+/* Logo SOLO dentro del formulario de login */
+#login-form {
+  position: relative !important;
+}
+
+#login-form::before {
+  content: "" !important;
+  display: block !important;
+  width: 250px !important;
+  height: 80px !important;
+  margin: 0 auto 30px !important;
+  background-image: url("/images/logo.png") !important;
+  background-size: contain !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+  z-index: 10 !important;
+}
+
+/* ============================================
+   OCULTAR LOGOS EN OTRAS UBICACIONES
+   ============================================ */
+/* Ocultar logo de la esquina superior izquierda */
+body::after {
+  display: none !important;
+  content: none !important;
+}
+
+/* Ocultar logos duplicados en la página de login */
+body.action-login #content::before,
+body.controller-account.action-login #content::before,
+body.action-login::before,
+body.controller-account.action-login::before {
+  display: none !important;
+  content: none !important;
+}
+
+/* ============================================
+   OCULTAR LOGOS POR DEFECTO DE REDMINE
+   ============================================ */
+#header img[src*="logo"],
+#header img[alt*="Logo"],
+#header img[alt*="logo"],
+.redmine-logo,
+.logo,
+#logo {
+  display: none !important;
+  visibility: hidden !important;
+}
+
+/* ============================================
+   AJUSTES RESPONSIVOS
+   ============================================ */
+@media (max-width: 768px) {
+  #header > h1 {
+    padding-left: 180px !important;
+    background-size: 150px auto !important;
+  }
+  
+  #header::before {
+    width: 150px !important;
+    height: 45px !important;
+  }
+  
+  #login-form::before {
+    width: 200px !important;
+    height: 64px !important;
+  }
+}
+
+/* ============================================
+   FORZAR VISIBILIDAD
+   ============================================ */
+#header > h1,
+#header::before,
+#login-form::before {
+  visibility: visible !important;
+  opacity: 1 !important;
+}

@@ -16,6 +16,15 @@ services:
     volumes:
       - redmine_files:/usr/src/redmine/files
       - ./themes:/usr/src/redmine/themes
+      - ./public/images:/usr/src/redmine/public/images
+      - ./public/stylesheets:/usr/src/redmine/public/stylesheets
+      - ./init-redmine-logo.sh:/usr/local/bin/init-redmine-logo.sh
+    command: >
+      bash -c "
+      chmod +x /usr/local/bin/init-redmine-logo.sh;
+      /usr/local/bin/init-redmine-logo.sh;
+      exec /docker-entrypoint.sh rails server -b 0.0.0.0
+      "
 
   db:
     image: mysql:5.7
