@@ -137,7 +137,7 @@
     }
     
     // Verificar si ya se inyectó el contenido
-    if (content.querySelector('.ezertech-logged-in-hero')) {
+    if (content.querySelector('.ezertech-logged-in-content')) {
       console.log('Ezertech: ✅ Vista de usuario logueado ya inyectada');
       return true;
     }
@@ -153,33 +153,9 @@
       document.head.appendChild(fontAwesomeLink);
     }
     
-    // Obtener nombre de usuario si está disponible
-    const loggedAs = document.getElementById('loggedas');
-    let userName = 'Usuario';
-    if (loggedAs) {
-      const loggedText = loggedAs.textContent || '';
-      const match = loggedText.match(/(?:Conectado como|Logged in as|como)\s+([^\s]+)/i);
-      if (match && match[1]) {
-        userName = match[1];
-      }
-    }
-    
     // Crear el contenido personalizado para usuario logueado
     const customContent = document.createElement('div');
     customContent.className = 'ezertech-logged-in-content';
-    
-    // Hero Section para usuario logueado
-    const hero = document.createElement('div');
-    hero.className = 'ezertech-logged-in-hero';
-    hero.innerHTML = `
-      <div class="ezertech-welcome-user">
-        <div class="ezertech-user-icon">
-          <i class="fas fa-user-circle"></i>
-        </div>
-        <h1>¡Bienvenido de vuelta, ${userName}!</h1>
-        <p>Gestiona tus proyectos, tickets y tareas desde un solo lugar</p>
-      </div>
-    `;
     
     // Sección de Proyectos
     const proyectosSection = document.createElement('div');
@@ -285,8 +261,7 @@
       </div>
     `;
     
-    // Agregar todo al contenedor
-    customContent.appendChild(hero);
+    // Agregar todo al contenedor (sin el hero)
     customContent.appendChild(proyectosSection);
     customContent.appendChild(adminSection);
     
