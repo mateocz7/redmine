@@ -11,10 +11,10 @@
 /* Logo en el header usando background-image */
 #header > h1 {
     position: relative !important;
-    padding-left: 230px !important;
-    min-height: 60px !important;
+    padding-left: 130px !important;
+    min-height: 50px !important;
     background-image: url("/images/logo.png") !important;
-    background-size: 200px auto !important;
+    background-size: 100px auto !important;
     background-repeat: no-repeat !important;
     background-position: 15px center !important;
     display: flex !important;
