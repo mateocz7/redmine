@@ -10,19 +10,46 @@
 
 /* Logo en el header usando background-image */
 #header > h1 {
-    content: "" !important;
-    display: block !important;
     position: relative !important;
-    left: 15px !important;
-    top: 10% !important;
-    width: 200px !important;
-    height: 60px !important;
+    padding-left: 230px !important;
+    min-height: 60px !important;
     background-image: url("/images/logo.png") !important;
-    background-size: contain !important;
+    background-size: 200px auto !important;
     background-repeat: no-repeat !important;
-    background-position: left center !important;
-    z-index: 10 !important;
-    pointer-events: none !important;
+    background-position: 15px center !important;
+    display: flex !important;
+    align-items: center !important;
+}
+
+/* Separador "/" antes del primer elemento de texto del proyecto */
+#header > h1 > .root:first-child::before,
+#header > h1 > .ancestor:first-child::before,
+#header > h1 > .current-project:first-child::before {
+    content: "/" !important;
+    display: inline-block !important;
+    margin-right: 10px !important;
+    color: rgba(255, 255, 255, 0.7) !important;
+    font-size: 1.1em !important;
+    font-weight: 300 !important;
+    vertical-align: middle !important;
+}
+
+/* Si el primer elemento es un enlace root, agregar separador */
+#header > h1 > a.root:first-child::before {
+    content: "/" !important;
+    display: inline-block !important;
+    margin-right: 10px !important;
+    color: rgba(255, 255, 255, 0.7) !important;
+    font-size: 1.1em !important;
+    font-weight: 300 !important;
+}
+
+/* Asegurar que los elementos de texto tengan espacio y no se monten sobre el logo */
+#header > h1 .root,
+#header > h1 .ancestor,
+#header > h1 .current-project {
+    margin-left: 0 !important;
+    padding-left: 0 !important;
 }
 
 
