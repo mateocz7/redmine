@@ -1,0 +1,59 @@
+# Configuration file for Redmine
+# 
+# Each environment has its own configuration options.  If you are only
+# running in production, you only need to edit the production block.
+# 
+# Settings that are common to all environments can be placed in the
+# 'defaults' section.  For example:
+#
+# defaults:
+#   email_delivery:
+#     delivery_method: :smtp
+#
+# production:
+#   email_delivery:
+#     smtp_settings:
+#       address: smtp.example.net
+#       port: 25
+#
+# development:
+#   email_delivery:
+#     delivery_method: :test
+#
+# More examples of configuration can be found here:
+# https://www.redmine.org/projects/redmine/wiki/EmailConfiguration
+
+defaults:
+  # Outgoing emails configuration
+  email_delivery:
+    delivery_method: :smtp
+
+production:
+  email_delivery:
+    delivery_method: :smtp
+    smtp_settings:
+      address: smtp.office365.com
+      port: 587
+      domain: ezertech.com.co
+      authentication: :login
+      user_name: soporte@ezertech.com.co
+      password: Z0Z6323R73CH++
+      enable_starttls_auto: true
+      openssl_verify_mode: 'peer'
+
+development:
+  email_delivery:
+    delivery_method: :smtp
+    smtp_settings:
+      address: smtp.office365.com
+      port: 587
+      domain: ezertech.com.co
+      authentication: :login
+      user_name: soporte@ezertech.com.co
+      password: Z0Z6323R73CH++
+      enable_starttls_auto: true
+      openssl_verify_mode: 'peer'
+
+test:
+  email_delivery:
+    delivery_method: :test
