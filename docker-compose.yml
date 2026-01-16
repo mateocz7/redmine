@@ -1,8 +1,6 @@
-version: "3.8"
-
 services:
   redmine:
-    image: redmine:latest
+    build: .
     container_name: redmine
     ports:
       - "3000:3000"
@@ -20,9 +18,7 @@ services:
       - ./public/stylesheets:/usr/src/redmine/public/stylesheets
       - ./public/javascripts:/usr/src/redmine/public/javascripts
       - ./config/configuration.yml:/usr/src/redmine/config/configuration.yml
-      - ./docker-entrypoint-wrapper.sh:/docker-entrypoint-wrapper.sh
       - ./init-redmine-logo.sh:/usr/local/bin/init-redmine-logo.sh
-    entrypoint: ["/docker-entrypoint-wrapper.sh"]
     command: ["rails", "server", "-b", "0.0.0.0"]
 
   db:
