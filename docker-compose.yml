@@ -33,6 +33,7 @@ services:
       MYSQL_PASSWORD: redmine
     volumes:
       - redmine_db:/var/lib/mysql
+      - ./backup:/backup
 
 volumes:
   redmine_files:
