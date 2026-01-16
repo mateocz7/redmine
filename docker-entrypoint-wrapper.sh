@@ -90,16 +90,17 @@ inject_custom_js() {
         fi
 
         # Verificar si el JS ya está incluido
-        if grep -q "custom_home.js" "$LAYOUT_FILE"; then
+        if grep -q "custom_home.js" "$LAYOUT_FILE" && grep -q "hide_fields_eps.js" "$LAYOUT_FILE"; then
             echo "✓ Custom JS already injected in layout"
             return 0
         fi
 
         # Método 1: Buscar </head> y agregar antes (más confiable)
         if grep -q "</head>" "$LAYOUT_FILE"; then
-            # Inyectar script tag directamente antes de </head>
+            # Inyectar script tags directamente antes de </head>
             sed -i '/<\/head>/i\
-    <script src="/javascripts/custom_home.js"></script>
+    <script src="/javascripts/custom_home.js"></script>\
+    <script src="/javascripts/hide_fields_eps.js"></script>
 ' "$LAYOUT_FILE"
             echo "✓ Custom JS injected in head section (inline script tag)"
             return 0
@@ -146,6 +147,10 @@ fi
 
 if [ ! -f "/usr/src/redmine/public/javascripts/custom_home.js" ]; then
     echo "⚠ Warning: JS file not found at /usr/src/redmine/public/javascripts/custom_home.js"
+fi
+
+if [ ! -f "/usr/src/redmine/public/javascripts/hide_fields_eps.js" ]; then
+    echo "⚠ Warning: JS file not found at /usr/src/redmine/public/javascripts/hide_fields_eps.js"
 fi
 
 # Intentar inyectar el CSS
