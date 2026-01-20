@@ -168,7 +168,7 @@
       <div class="ezertech-welcome-icon">
         <i class="fas fa-hand-sparkles"></i>
       </div>
-      <h1 class="ezertech-welcome-title">¡zertech!</h1>
+      <h1 class="ezertech-welcome-title">¡Ezertech!</h1>
       <p class="ezertech-welcome-subtitle">Sistema de Gestión de Proyectos y Peticiones</p>
       <div class="ezertech-welcome-content">
         <p>Estamos encantados de tenerte aquí. Desde este panel podrás gestionar todos tus proyectos, peticiones y actividades de manera eficiente y organizada.</p>
