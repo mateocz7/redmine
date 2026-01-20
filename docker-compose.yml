@@ -1,3 +1,6 @@
+
+version: '3.9'
+
 services:
   redmine:
     build: .
@@ -12,7 +15,8 @@ services:
       REDMINE_DB_USERNAME: redmine
       REDMINE_DB_PASSWORD: redmine
     depends_on:
-      - db
+      db:
+        condition: service_healthy
     volumes:
       - redmine_files:/usr/src/redmine/files
       - ./themes:/usr/src/redmine/themes
@@ -27,7 +31,7 @@ services:
     image: mysql:5.7
     container_name: redmine_db
     ports:
-      - "3306:3306"   # ← ESTO ES LO QUE FALTABA
+      - "3306:3306"
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: redmine
@@ -36,7 +40,13 @@ services:
     volumes:
       - redmine_db:/var/lib/mysql
       - ./backup:/backup
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 3s
+      timeout: 5s
+      retries: 5
 
 volumes:
   redmine_files:
   redmine_db:
+
